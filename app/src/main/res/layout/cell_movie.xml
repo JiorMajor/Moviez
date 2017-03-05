@@ -1,45 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:background="@color/colorBlackTransparent"
     android:foreground="?attr/selectableItemBackground">
 
     <ImageView
         android:id="@+id/ivPoster"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="200dp"
         android:scaleType="centerCrop"/>
 
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/margin_big"
-        android:background="@color/colorAccent"
-        android:layout_gravity="top|right">
+        android:background="@color/colorBlack"
+        android:layout_gravity="bottom|center">
 
         <TextView
             android:id="@+id/tvTitle"
-            android:padding="@dimen/margin_med"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/colorPureWhite"
-            android:text="John Wick"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:visibility="gone"/>
+            android:textSize="@dimen/text_size_med"
+            android:text="A Secret life of Pets"
+            android:singleLine="true"
+            android:ellipsize="marquee"
+            android:gravity="left"
+            android:layout_gravity="center" />
 
-        <TextView
-            android:id="@+id/tvPopularity"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_marginTop="@dimen/margin_med"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPureWhite"
-            android:text="4.5"
-            android:textSize="@dimen/margin_big" />
+            android:orientation="horizontal">
+
+            <ImageView
+                android:src="@drawable/ic_trending_up_white_24dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/margin_med"/>
+
+            <TextView
+                android:id="@+id/tvPopularity"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPureWhite"
+                android:layout_gravity="center"
+                android:textSize="@dimen/text_size_med" />
+
+        </LinearLayout>
+
+
 
     </LinearLayout>
 
-</FrameLayout>
+</LinearLayout>

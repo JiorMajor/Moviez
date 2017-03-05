@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,6 +26,11 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
 
 
     List<MovieModel> movieModels;
+    ClickListener clickListener;
+
+    public void setClickListener(ClickListener clickListener) {
+        this.clickListener = clickListener;
+    }
 
     public void setMovieModels(List<MovieModel> movies) {
         if(movies == null) {
@@ -32,6 +38,11 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
         }
         movieModels = movies;
         notifyDataSetChanged();
+    }
+
+    public void addMore(List<MovieModel> movies) {
+        movieModels.addAll(movies);
+        notifyItemRangeInserted(movieModels.size() - movies.size(), movies.size());
     }
 
     @Override
@@ -51,7 +62,11 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
     }
 
 
-    class MovieViewHolder extends RecyclerView.ViewHolder {
+    public MovieModel getItem(int position) {
+        return movieModels.get(position);
+    }
+
+    class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @BindView(R.id.ivPoster)
         ImageView ivPoster;
@@ -63,18 +78,31 @@ public class MovieListAdapter extends RecyclerView.Adapter<MovieListAdapter.Movi
         public MovieViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            itemView.setOnClickListener(this);
         }
 
         void bind(MovieModel movieModel) {
             Glide.with(ivPoster.getContext())
                     .load(Api.PHOTO_URL + movieModel.getPosterPath())
                     .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .placeholder(R.drawable.placeholder)
                     .crossFade()
                     .into(ivPoster);
             tvTitle.setText(movieModel.getTitle());
-            tvTitle.setVisibility(View.GONE);
-            tvPopularity.setText(String.valueOf(movieModel.getVoteAverage()));
+            int popularity = movieModel.getPopularity().intValue();
+            tvPopularity.setText(String.valueOf(popularity));
 
         }
+
+        @Override
+        public void onClick(View view) {
+            if(clickListener != null) {
+                clickListener.onItemClick(view, getAdapterPosition());
+            }
+        }
+    }
+
+    public interface ClickListener {
+        void onItemClick(View view, int position);
     }
 }

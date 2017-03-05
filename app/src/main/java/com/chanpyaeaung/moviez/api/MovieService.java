@@ -36,7 +36,8 @@ public interface MovieService {
     @GET(DISCOVER_MOVIE + "?" + API_KEY + "=" + BuildConfig.KEY)
     Observable<Result> getMoviesBySort(@Query(SORT_BY) String sortBy, @Query(PAGE) int page);
 
-    @GET(MOVIE + "/{id}/" + "?" + API_KEY + "=" + BuildConfig.KEY)
+    @GET(MOVIE + "/{id}" + "?" + API_KEY + "=" + BuildConfig.KEY)
     Observable<MovieDetail> getMovieDetail(@Path("id") int id, @Query(LANGUAGE) String language);
+
 
 }

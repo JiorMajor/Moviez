@@ -5,4 +5,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorBlackTransparent">#5000</color>
     <color name="colorPureWhite">#FFF</color>
+    <color name="colorBlack">#000</color>
+    <color name="colorGrayBlack">#544f4f</color>
+    <color name="colorSemiBlack">#494848</color>
 </resources>

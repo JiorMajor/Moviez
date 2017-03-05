@@ -16,5 +16,7 @@ public class Api {
     // for cover image
     public static final String BACKDROP_URL = "http://image.tmdb.org/t/p/w342/";
 
+    public static final String CINEMA_PAGE = "http://www.cathaycineplexes.com.sg";
+
 
 }
