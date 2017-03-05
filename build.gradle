@@ -16,6 +16,17 @@ allprojects {
     repositories {
         jcenter()
     }
+
+    project.ext.myCompileSdkVersion = 25
+    project.ext.myBuildToolsVersion = "25.0.0"
+
+    project.ext.myVersionCode = 1
+    project.ext.myVersionName = "1.0.0"
+
+    project.ext.myTargetSdkVersion = 25
+    project.ext.myMinSdkVersion = 9
+    project.ext.myApplicationId = "com.chanpyaeaung.moviez"
+
 }
 
 task clean(type: Delete) {
