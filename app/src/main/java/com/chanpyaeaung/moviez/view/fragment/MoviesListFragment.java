@@ -89,7 +89,6 @@ public class MoviesListFragment extends Fragment implements MovieListView {
     @Override
     public void onResume() {
         super.onResume();
-        setHasOptionsMenu(true);
     }
 
     @Override
@@ -107,7 +106,19 @@ public class MoviesListFragment extends Fragment implements MovieListView {
         ButterKnife.bind(this, fragmentView);
         ((MainActivity)getActivity()).setSupportActionBar(toolbar);
 
-        setHasOptionsMenu(true);
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_sort:
+                        showSortDialog();
+                        return true;
+                    default:
+                        return true;
+                }
+            }
+        });
+
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -124,7 +135,6 @@ public class MoviesListFragment extends Fragment implements MovieListView {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        setHasOptionsMenu(true);
         initUI();
         getMoviesByType();
     }
@@ -236,7 +246,7 @@ public class MoviesListFragment extends Fragment implements MovieListView {
         movieListAdapter.setClickListener(new MovieListAdapter.ClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                //setHasOptionsMenu(false);
+                setHasOptionsMenu(false);
                 MovieDetailFragment frag = new MovieDetailFragment();
                 frag.setMovieId(movieListAdapter.getItem(position).getId());
                 ((MainActivity)getActivity()).setFragment(frag);

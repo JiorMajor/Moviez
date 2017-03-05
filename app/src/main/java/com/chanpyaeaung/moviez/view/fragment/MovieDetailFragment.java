@@ -161,9 +161,6 @@ public class MovieDetailFragment extends Fragment implements ObservableScrollVie
                 ((MainActivity)getActivity()).setFragment(frag);
             }
         });
-
-        setHasOptionsMenu(false);
-
         return detailView;
     }
 

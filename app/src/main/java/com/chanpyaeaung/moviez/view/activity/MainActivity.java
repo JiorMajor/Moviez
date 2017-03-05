@@ -51,18 +51,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 
-//        if(getCurrentFragment() instanceof MovieDetailFragment) {
-//            setFragment(new MoviesListFragment());
-//        } else if(getCurrentFragment() instanceof WebFragment) {
-//            super.onBackPressed();
-//        } else {
-//            super.onBackPressed();
-//        }
-
         if(getSupportFragmentManager().getBackStackEntryCount() == 0) {
             super.onBackPressed();
         } else {
             getSupportFragmentManager().popBackStack();
+            if (getCurrentFragment() instanceof MovieDetailFragment) {
+                getCurrentFragment().setHasOptionsMenu(true);
+            }
         }
 
     }
