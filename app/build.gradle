@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        config {
+            keyAlias KEY_ALIAS
+            keyPassword KEY_PASSWORD
+            storeFile file('/Users/johnmajor/Developer/Android/key/android.jks')
+            storePassword KEYSTORE_PASSWORD
+        }
+    }
     compileSdkVersion project.ext.myCompileSdkVersion
     buildToolsVersion project.ext.myBuildToolsVersion
     defaultConfig {
@@ -13,17 +21,16 @@ android {
         buildConfigField 'String', 'KEY', TMDB_API_KEY
     }
     buildTypes {
-
         debug {
             debuggable true
             applicationIdSuffix '.debug'
             versionNameSuffix '-DEBUG'
         }
-
         release {
             debuggable false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.config
         }
     }
 }
