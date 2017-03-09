@@ -2,7 +2,7 @@
 Yet another movies app with the use of The Movie DB api
 
 
-## Features
+#### Features
 - Browse Movies 
 - Sort Movies by New Release and Popularity 
 - View Details
@@ -10,3 +10,4 @@ Yet another movies app with the use of The Movie DB api
 
 
 
+![](https://github.com/JiorMajor/Moviez/tree/master/misc/img/google-play-badge.png)
