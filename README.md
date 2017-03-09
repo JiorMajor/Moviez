@@ -10,4 +10,4 @@ Yet another movies app with the use of The Movie DB api
 
 
 
-<a href="https://play.google.com/store/apps/details?id=com.chanpyaeaung.moviez&ah=hxyfpVtwYZcMRORN_J9ES8kay_Q">![](https://raw.githubusercontent.com/JiorMajor/Moviez/tree/master/misc/img/google-play-badge.png)</a>
+![](https://raw.githubusercontent.com/JiorMajor/Moviez/tree/master/misc/img/google-play-badge.png)
